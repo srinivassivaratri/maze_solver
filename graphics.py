@@ -1,46 +1,28 @@
-from tkinter import Tk, BOTH, Canvas
+from tkinter import Tk, BOTH, Canvas  # Import necessary components from tkinter for creating a graphical interface.
 
-class Window:
-    """Represents a graphical window for the Maze Solver application."""
+class Window:  # Define a blueprint for creating a window for our application.
+    
+    def __init__(self, width, height):  # Initialize a new window with given width and height.
+        
+        self.root = Tk()  # Create the main window of the application.
+        self.root.title("Maze Solver")  # Set the title of the window to "Maze Solver".
+        self.canvas = Canvas(self.root, bg="white", height=height, width=width)  # Create a drawing area inside the window.
+        self.canvas.pack(fill=BOTH, expand=1)  # Make the drawing area fill the entire window.
+        self.running = False  # Set a flag to indicate if the application is running or not.
+        self.root.protocol("WM_DELETE_WINDOW", self.close)  # Set up a function to handle window closing.
 
-    def __init__(self, width, height):
-        """Initializes a new instance of the Window class.
+    def redraw(self):  # Function to update the graphics in the window.
+        
+        self.root.update_idletasks()  # Update any pending tasks in the window.
+        self.root.update()  # Update the window to reflect changes.
 
-        Args:
-            width (int): The width of the window.
-            height (int): The height of the window.
-        """
-        self.root = Tk()  # Create the root window of the application.
-        self.root.title("Maze Solver")  # Set the title of the window.
-        self.canvas = Canvas(self.root, bg="white", height=height, width=width)  # Create a canvas widget for drawing graphics.
-        self.canvas.pack(fill=BOTH, expand=1)  # Pack the canvas widget into the window.
-        self.running = False  # Indicates whether the application is running or not.
-        self.root.protocol("WM_DELETE_WINDOW", self.close)  # Set the close event handler.
+    def wait_for_close(self):  # Function to keep the window open until it is closed by the user.
+        
+        self.running = True  # Set the flag to indicate that the application is running.
+        while self.running:  # Keep looping until the application is closed.
+            self.redraw()  # Update the graphics in the window.
+        print("window closed...")  # Print a message when the window is closed.
 
-    def redraw(self):
-        """Redraws the window and updates the graphics.
-
-        This method updates the graphics displayed in the window.
-        It should be called whenever the graphics need to be updated.
-        """
-        self.root.update_idletasks()  # Update the idle tasks of the window.
-        self.root.update()  # Update the window.
-
-    def wait_for_close(self):
-        """Waits for the window to be closed by the user.
-
-        This method starts the main event loop of the window,
-        which waits for the user to close the window.
-        """
-        self.running = True  # Set the running flag to True.
-        while self.running:
-            self.redraw()  # Redraw the window.
-        print("window closed...")
-
-    def close(self):
-        """Closes the window and stops the application.
-
-        This method is called when the user closes the window.
-        It stops the application and closes the window.
-        """
-        self.running = False  # Set the running flag to False.
+    def close(self):  # Function to close the window and stop the application.
+        
+        self.running = False  # Set the flag to indicate that the application should stop.

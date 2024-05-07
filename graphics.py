@@ -23,6 +23,6 @@ class Window:  # Define a blueprint for creating a window for our application.
             self.redraw()  # Update the graphics in the window.
         print("window closed...")  # Print a message when the window is closed.
 
-    def close(self):  # Function to close the window and stop the application.
+    def close(self):  # Function to close the window and stop the application..
         
         self.running = False  # Set the flag to indicate that the application should stop.

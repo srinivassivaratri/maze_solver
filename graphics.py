@@ -35,6 +35,7 @@ class Window:
         self.running = True  # Set the running flag to True.
         while self.running:
             self.redraw()  # Redraw the window.
+        print("window closed...")
 
     def close(self):
         """Closes the window and stops the application.

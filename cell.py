@@ -33,16 +33,22 @@ class Cell:
     
     def draw_move(self, to_cell, undo=False):
         #  calculate the center coordinates of the current cell.
-        from_x = self.x + self.width / 2
-        from_y = self.y + self.height / 2
+        half_length = abs(self._x2 - self._x1) // 2
+        x_center = half_length + self._x1
+        y_center = half_length + self._y1
 
         # calculate the center coordinates of the destination cell.
-        to_x = to_cell.x + to_cell.width / 2
-        to_y = to_cell.y + to_cell.height / 2
+        half_length2 = abs(self._x2 - self._x1) // 2
+        x_center2 = half_length2 + to_cell._x1
+        y_center2 = half_length2 + to_cell._y1
 
         # determine the colour of the line based on undo flag 
-        color = "gray" if undo else "red"
+        fill_color = "red"
+        if undo:
+            fill_color = "gray"
+        
+        line = Line(Point(x_center,y_center), Point(x_center2,y_center2))
+        self.win.draw_line(line, fill_color)
 
-        # Draw the line between the centers of the two cells.
-        self.canvas.create_line(from_x,from_y,to_x,to_y,fill=color,width=2)
+
         

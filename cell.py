@@ -30,3 +30,19 @@ class Cell:
         if self.has_bottom_wall:
             line = Line(Point(x1, y2), Point(x2, y2))
             self._win.draw_line(line)
+    
+    def draw_move(self, to_cell, undo=False):
+        #  calculate the center coordinates of the current cell.
+        from_x = self.x + self.width / 2
+        from_y = self.y + self.height / 2
+
+        # calculate the center coordinates of the destination cell.
+        to_x = to_cell.x + to_cell.width / 2
+        to_y = to_cell.y + to_cell.height / 2
+
+        # determine the colour of the line based on undo flag 
+        color = "gray" if undo else "red"
+
+        # Draw the line between the centers of the two cells.
+        self.canvas.create_line(from_x,from_y,to_x,to_y,fill=color,width=2)
+        

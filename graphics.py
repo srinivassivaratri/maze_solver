@@ -26,3 +26,29 @@ class Window:  # Define a blueprint for creating a window for our application.
     def close(self):  # Function to close the window and stop the application..
         
         self.running = False  # Set the flag to indicate that the application should stop.
+
+    def draw_line(self, line, fill_color="black"):
+        line.draw(self.canvas,fill_color)
+
+
+class Point:  # Define a blueprint for creating points in a 2D space.
+
+    def __init__(self, x, y):  # Initialize a point with given x and y coordinates.
+        
+        self.x = x  # Store the x coordinate of the point.
+        self.y = y  # Store the y coordinate of the point.
+
+class Line:  # Define a blueprint for creating line segments.
+
+    def __init__(self, p1, p2):  # Initialize a line segment with two points.
+        
+        self.p1 = p1  # Store the first point of the line segment.
+        self.p2 = p2  # Store the second point of the line segment.
+
+    def draw(self, canvas, fill_color="black"):  # Draw the line segment on a canvas with optional color.
+        
+        canvas.create_line(self.p1.x, self.p1.y, self.p2.x, self.p2.y, fill=fill_color, width=2)  # Create a line on the canvas using the points' coordinates.
+
+
+
+    

@@ -50,3 +50,13 @@ class Maze:
             return
         self._win.redraw()
         time.sleep(0.05)
+    
+    def _break_entrance_and_exit(self):
+        for i in range(self._num_cols):
+            self._cells[i][0].set_top_wall(True)
+            self._cells[i][self._num_rows - 1].set_bottom_wall(True)
+            self._draw_cell(i, 0)
+        for i in range(self._num_rows):
+            self._cells[0][i].set_left_wall(True)
+            self._cells[self._num_cols - 1][i].set_right_wall(True)
+            self._draw_cell(0, i)

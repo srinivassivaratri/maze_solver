@@ -1,2 +1,2 @@
-# maze_solver
-<h2>This is my second git project from boot.dev curriculum</h2>
+<h1>Maze Solver</h1>
+<p>This is my second backend project</p>

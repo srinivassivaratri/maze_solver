@@ -86,6 +86,6 @@ If something's not working, try these steps:
 
 1. Make sure Python 3 is installed and up-to-date
 2. Check that Tkinter is installed correctly
-3. If you're still stuck, ask for help in our project's chat room
+3. If you're still stuck, raise a pull request.
 
 Enjoy watching mazes get solved!
